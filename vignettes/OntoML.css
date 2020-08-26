@@ -1,0 +1,748 @@
+/** plot styles for OntoML.Rmd **/
+
+
+par {
+  ps: 7;
+  cex: 1;
+}
+par.empty {
+  mai: 0.01 0.01 0.01 0.01;
+}
+
+plot {
+  type: n;
+  axes: FALSE;
+  frame: FALSE;
+  xlab: ;
+  ylab: ;
+  main: ;
+}
+rect, points, text, mtext {
+  xpd: 1;
+}
+axis {
+  las: 1;
+}
+
+
+/** multipanel **/
+
+text.multipanel {
+  cex: 1.72;
+  font: 2;
+  xpd: 1;
+  adj: 0 1.1;
+}
+
+
+/** custom histogram/barplot **/
+
+customhist {
+  padding: 0.08;
+}
+par.customhist {
+  mai: 0.45 0.4 0.3 0.03;
+  mgp: 0 0 0;
+}
+barplot.customhist {
+  axes: FALSE;
+  axisnames: FALSE;
+  border: NA;
+  col: #2d7dd2;
+  space: 0.2;
+} 
+barplot.customhist.filtered {
+  col: #c0c8d1;
+}
+text.customhist.x {
+  srt: 40;
+  adj: 1 0.5;
+}
+axis.customhist.y {
+  tck: -0.04;
+  line: 0.2;
+}
+mtext.customhist.ylab {
+  line: 1.1;
+}
+mtext.customhist.xlab {
+  line: 1.7;
+}
+mtext.customhist.main {
+  line: 0.3;
+  adj: 0;
+}
+
+
+/** bars and boxes **/
+
+par.bars {
+  mai: 0.1 0.01 0.35 0.08;
+  mgp: 0 0 0;
+}
+par.bars.labels {
+  mai: 0.1 0.01 0.35 0.04;
+  mgp: 0 0 0;
+}
+bar {
+  width: 0.85;
+}
+plot.bars {
+  axes: FALSE;
+  frame: FALSE;
+  xaxs: i;
+  yaxs: i;
+}
+text.bars.axis.right {
+  adj: 1 0.5;
+  font: 3;
+}
+text.bars.axis.left {
+  adj: 0 0.5;
+  font: 1;
+}
+text.bars.axis.center {
+  adj: 0.5 0.5;
+  font: 1;
+}
+text.bars.filtered.axis {
+  col: #666666;
+}
+axis.bars {
+  lwd: 1;
+  tck: -0.03;
+  cex.axis: 0.85;
+}
+axis.bars.x {
+  line: 0.05;
+}
+mtext.bars.xlab {
+  line: 0.7;
+}
+lines.bars.separator {
+  lwd: 0.5;
+  col: #aaaaaa;
+}
+rect.bars.bar {
+  col: #2d7dd2;
+  border: NA;
+  lwd: 0;
+}
+rect.bars.anno.bar, rect.bars.anno.box {
+  col: #92c9b1;
+}
+rect.bars.filtered.bar, rect.bars.filtered.box {
+  col: #c0c8d1;
+}
+lines.bars.bar {
+  col: #2d7dd2;
+  lwd: 2;
+  lend: 1;
+}
+lines.bars.filtered.bar {
+  col: #c0c8d1;
+}
+lines.bars.anno.bar, lines.bars.anno.whisker {
+  col: #92c9b1;
+}
+rect.bars.box {
+  border: NA;
+  col: #2d7dd2;
+  lwd: 0;
+}
+lines.bars.whisker {
+  col: #2d7dd2;
+  lwd: 1;
+}
+lines.bars.filtered.whisker {
+  col: #c0c8d1;
+}
+points.bars.extrema {
+  pch: 19;
+  col: #2d7dd2;
+  cex: 0.15;
+}
+points.bars.filtered.extrema {
+  col: #c0c8d1;
+}
+points.bars.anno.extrema {
+  col: #92c9b1;
+}
+lines.bars.median {
+  col: #000000;
+  lwd: 2;
+  lend: 1;
+}
+
+
+
+
+/** scatter plots **/
+
+par.scatter {
+  mai: 0.35 0.4 0.15 0.1;
+  mgp: 0 0 0;
+}
+par.scatter.large {
+  mai: 0.35 0.45 0.15 0.1;
+  mgp: 0 0 0;
+}
+par.scatter.large.next {
+  mai: 0.35 0.00 0.15 0.1;
+  mgp: 0 0 0;
+}
+plot.scatter {
+  axes: FALSE;
+  frame: FALSE;
+  type: n;
+}
+points.scatter {
+  pch: 21;
+  lwd: 1;
+  bg: #ecf4f6;
+  col: #2d7dd2;
+  cex: 0.8;
+}
+points.scatter.anno {
+  bg: #f4faf7;
+  col: #92c9b1;
+}
+
+text.scatter.label {
+  adj: 0.25 0.5;
+  cex: 1;
+  font: 3;
+  xpd: 1;
+  col: #282828;
+}
+axis.scatter {
+  tck: -0.02;
+}
+axis.scatter.large {
+  tck: -0.02;
+}
+axis.scatter.x {
+  line: -0.2;
+}
+axis.scatter.y {
+  line: 0.2;
+}
+mtext.scatter.xlab {
+  line: 0.6;
+}
+mtext.scatter.ylab {
+  line: 1.2;
+}
+mtext.scatter.large.ylab {
+  line: 1.4;
+}
+
+
+
+/** graph **/
+
+par.graph {
+  mai: 0.05 0.1 0.2 0.08;
+}
+par.graph.search.legend {
+  mai: 0.01 0.1 0.01 0.08;
+}
+plot.graph {
+
+}
+graphlegend {
+  padding: 0.02;
+}
+points.graph {
+  cex: 0.8;
+  pch: 21;
+  lwd: 0.5;
+  bg: #f0b0b0;
+}
+box.graph {
+  lwd: 0.5;
+  col: #aaaaaa;
+}
+points.graph.search {
+  cex: 0.65;
+  pch: 21;
+  lwd: 0.5;
+  bg: #e4e4e8;
+}
+points.graph.search.selfhit {
+  bg: #9090f8;
+  lwd: 1;
+}
+points.graph.root {
+  lwd: 2;
+  cex: 1;
+  bg: #ee6060;
+}
+text.graph.root {
+  adj: 1.4 -0.6;
+}
+text.graph.search.legend {
+  adj: 0 0.5;
+}
+Arrows.graph {
+  arr.length: 0.18;
+  arr.width: 0.09;
+}
+Arrows.graph.bg {
+  col: #cccccc;
+}
+Arrows.graph.rank_2 {
+  arr.length: 0.12;
+  arr.width: 0.06;
+  col: #777777;
+}
+Arrows.graph.rank_3 {
+  arr.length: 0.10;
+  arr.width: 0.05;
+  col: #cccccc;
+}
+lines.graph {
+  lwd: 1;
+}
+lines.graph.bg {
+  lty: 2;
+}
+lines.graph.search.rank_0 {
+  lwd: 2;
+}
+lines.graph.search.rank_1 {
+  lwd: 2;
+}
+lines.graph.search.rank_2 {
+  lwd: 2;
+}
+lines.graph.search.rank_3 {
+  lwd: 0.5;
+}
+lines.graph.search.rank_4, lines.graph.search.rank_5 {
+  lwd: 0;
+}
+mtext.graph.main {
+  line: -0.1;
+}
+
+
+
+
+/** table with heatmap / standard heatmap **/
+
+heattable {
+  between: 0.25;
+  legend.padding: 0.25;
+  legend.textpad: 0.05;
+  legend.width: 0.15;
+  legend.height: 2.4;
+}
+heatmap {
+  legend.padding: 0.018;
+  legend.textpad: 0.004;
+  legend.width: 0.015;
+  legend.height: 2.8;
+}
+heatmap.glm {
+  legend.padding: 0.03;
+  legend.textpad: 0.008;
+  legend.width: 0.025;
+  legend.height: 9;
+}
+par.heattable {
+  mai: 0.25 0.5 0.25 0.4;
+  mgp: 0 0 0;
+}
+par.heatmap {
+  mai: 0.45 0.8 0.2 0.45;
+  mgp: 0 0 0;
+}
+par.heatmap.glm {
+  mai: 0.7 0.8 0.35 0.45;
+  mgp: 0 0 0;
+}
+rect.heattable, rect.heatmap {
+  border: NA;
+  lwd: 0;
+}
+rect.heatmap.NA {
+  density: 25;
+  col: #cccccc;
+  lwd: 0.5;
+}
+text.heattable {
+  cex: 0.85;
+}
+text.heattable.high {
+  col: #000000;
+}
+text.heattable.low {
+  col: #f4f4f4;
+}
+axis.heattable {
+  cex.axis: 0.85;
+}
+axis.heattable.x {
+  line: -0.4;
+}
+axis.heatmap.x {
+  line: 0.45;
+}
+axis.heatmap.y {
+  line: 0.2;
+  cex.axis: 0.85;
+  col: #444444;
+}
+text.heatmap.x {
+  srt: 55;
+  cex: 0.85;
+  adj: 1 0.5;
+}
+text.heatmap.glm.x {
+  srt: 35;
+}
+axis.heattable.y {
+  line: -0.2;
+}
+axis.heattable.main {
+  cex: 1;
+  line: 0;
+}
+rect.heattable.outer {
+  border: #000000;
+  lwd: 1;
+}
+rect.heattable.legend, rect.heatmap.legend {
+  lwd: 0;
+}
+rect.heattable.legend.outer, rect.heatmap.legend.outer {
+  border: #000000;
+  col: NA;
+  lwd: 1;
+}
+text.heattable.legend, text.heatmap.legend {
+  adj: 0 0.5;
+  cex: 0.85;
+  col: #333333;
+}
+text.heattable.legend.main, text.heatmap.legend.main {
+  adj: 0 -1;
+}
+mtext.heattable.xlab {
+  line: 0.3;
+}
+mtext.heattable.ylab {
+  line: 1.5;
+}
+box.heatmap {
+  lwd: 1;
+  col: #000000;
+}
+
+
+/** yaml plots **/
+
+yaml {
+  indent: 0.03;
+  key.width: 0.16;
+  line.height: 0.12;
+}
+par.yaml {
+  mai: 0.1 0.0 0.15 0.01;
+}
+plot.yaml {
+  axes: FALSE;
+  frame: FALSE;
+}
+text.yaml {
+  cex: 0.85;
+  font: 1;
+  adj: 0 0.5;
+}
+text.yaml.key {
+  col: #777777;
+}
+text.yaml.text {
+  col: #222222;
+}
+mtext.yaml.main {
+  line: -0.1;
+}
+lines.yaml {
+  xpd: 1;
+  lwd: 1.5;
+}
+text.yaml.side {
+  cex: 1;
+  col: #000000;
+  adj: 1 0.5;
+}
+
+
+
+/** embedding plots **/
+
+par.embedding {
+  mai: 0.15 0.2 0.15 0.1;
+}
+plot.embedding {
+  frame: FALSE;
+  axes: FALSE;
+}
+box.embedding {
+  lwd: 0.5;
+  col: #222222;
+}
+text.embedding {
+  cex: 2;
+}
+points.embedding {
+  pch: 21;
+  lwd: 0.5;
+  bg: #2d7dd2;
+  col: #000000;
+  cex: 0.8;
+}
+points.embedding.root {
+  lwd: 1.75;
+  cex: 1;
+  bg: #2d7dd2;
+}
+points.embedding.leaf {
+  bg: #ecf4f6;
+  col: #888888;
+  cex: 0.6;
+}
+mtext.embedding.main {
+  font: 3;
+}
+mtext.embedding.xlab {
+  line: -0.2;
+}
+mtext.embedding.ylab {
+  line: 0.0;
+}
+legend.embedding {
+  bty: n;
+  pch: 21;
+  cex: 1;
+  y.intersp: 0.55;
+  x.intersp: 0.6;
+}
+polygon.embedding {
+  lwd: 0.5;
+  lty: 2;
+  border: #444444;
+  col: NA;
+}
+lines.embedding.label {
+  lwd: 0.5;
+  lty: 1;
+  col: #444444;
+}
+text.embedding.label {
+  cex: 0.85;
+  col: #000000;
+  adj: 0 0;
+}
+
+
+/** integer histogram **/
+
+par.inthist {
+  mgp: 0 0 0;
+}
+par.inthist.tall {
+  mai: 0.25 0.2 0.15 0.01;
+}
+par.inthist.top {
+  mai: 0.1 0.25 0.15 0.1;
+}
+par.inthist.bottom {
+  mai: 0.3 0.25 0.05 0.1;
+}
+plot.inthist {
+  frame: FALSE;
+  type: n;
+  axes: FALSE;
+  xlab: ;
+  ylab: ;
+}
+hist.inthist {
+  yaxs: i;
+  axes: FALSE;
+  main: ;
+  xlab: ;
+  ylab: ;
+  border: NA;
+}
+hist.inthist.nodiff {
+  col: #999999;
+}
+hist.inthist.diff {
+  col: #2d7dd2;
+}
+axis.inthist {
+  las: 1;
+  lwd: 1;
+  tck: -0.04;
+}
+axis.inthist.x {
+  tck: -0.045;
+  line: -0.22;
+}
+axis.inthist.y {
+  line: 0.2;
+}
+mtext.inthist.xlab {
+  line: 0.5;
+}
+mtext.inthist.ylab {
+  line: 0.1;
+}
+mtext.inthist.main {
+  line: -0.2;
+}
+mtext.inthist.bottom.main {
+  line: -0.5;
+}
+lines.inthits.label {
+  lwd: 0.5;
+  col: #444444;
+}
+text.inthits.label {
+  col: #000000;
+  cex: 0.85;
+  adj: 0.5 0;
+}
+
+
+/** diffusion line graph **/
+
+par.lines {
+  mai: 0.3 0.4 0.15 0.1;
+  mgp: 0 0 0;
+}
+plot.lines {
+  xlab: ;
+  ylab: ;
+  main: ;
+  axes: FALSE;
+  frame: FALSE;
+  yaxs: i;
+}
+lines.lines {
+  lwd: 2;
+  col: #2d7dd2;
+}
+lines.lines.plain {
+  col: #92c9b1;
+}
+lines.lines.baseline {
+  lwd: 0.5;
+  lty: 2;
+}
+points.lines {
+  pch: 21;
+  cex: 0.8;
+  lwd: 1.5;
+  col: #2d7dd2;
+  bg: #ffffff;
+}
+points.lines.plain {
+  col: #92c9b1;
+}
+axis.lines {
+  tck: -0.02;
+}
+axis.lines.x {
+  line: -0.2;
+}
+axis.lines.y {
+  line: 0.2;
+}
+text.lines.label {
+  font: 3;
+}
+mtext.lines.xlab {
+  line: 0.5;
+}
+mtext.lines.ylab {
+  line: 1.2;
+}
+mtext.lines.main {
+  font: 3;
+}
+legend.lines {
+  bty: n;
+  pch: 21;
+  pt.lwd: 1.5;
+  pt.cex: 0.9;
+  col: #2d7dd2 #92c9b1;
+  y.intersp: 0.6;
+  x.intersp: 0.65;
+}
+
+
+/** ontologyterms **/
+
+ontologyterm {
+  line.height: 0.25;
+  id.width: 0.14;
+}
+ontologyterm.wide {
+  id.width: 0.1;
+  line.height: 0.22;
+}
+par.ontologyterm {
+  mai: 0.06 0.02 0.26 0.1;
+  mgp: 0 0 0;
+}
+plot.ontologyterm {
+  frame: FALSE;
+  axes: FALSE;
+  xlab: ;
+  ylab: ;
+  main: ;
+}
+text.ontologyterm {
+  adj: 0 0;
+  xpd: 1;
+}
+text.ontologyterm.id {
+  col: #444444;
+  cex: 0.85;
+}
+text.ontologyterm.main {
+  font: 2;
+}
+
+
+/** custom barplot with before/after performance **/
+
+par.simplebars {
+  mai: 0.45 0.5 0.22 0.12;
+  mgp: 0 0 0;
+}
+barplot.simplebars {
+  horiz: TRUE;
+  las: 1;
+  border: NA;
+  col: #2d7dd2;
+}
+axis.simplebars.x {
+  line: -0.25;
+  tck: -0.065;
+}
+axis.simplebars.y {
+  line: 0.2;
+}
+mtext.simplebars.xlab {
+  line: 0.4;
+}
+mtext.simplebars.main {
+  line: -0.1;
+  font: 3;
+}
+

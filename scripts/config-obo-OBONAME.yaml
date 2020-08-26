@@ -1,0 +1,22 @@
+name: crossmap-obo-OBONAME
+comment: OBONAME ontology
+data:
+  name: OBONAME-name.yaml.gz
+  plain: OBONAME-plain.yaml.gz
+  parents: OBONAME-parents.yaml.gz
+tokens:
+  k: 6
+features:
+  map: OBONAME-plain-feature-map.tsv.gz
+  max_number: 1000000
+  weighting: [0, 1]
+indexing:
+  trim_search: 0
+diffusion:
+  threshold: 0.05
+logging:
+  progress: 500000
+cache:
+  counts: 250000
+  data: 250000
+

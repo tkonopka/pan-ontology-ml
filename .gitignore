@@ -1,0 +1,25 @@
+# local temporary files
+.idea
+*~
+aws
+crossmap*
+crossprep*
+*temp.bash
+*out
+
+# data files
+*tsv
+*csv
+*gz
+*zip
+data*
+
+# graphics and compiled vignettes
+*pdf
+*png
+*jpg
+*jpeg
+*tex
+*html
+vignettes/cache*
+

@@ -1,0 +1,151 @@
+---
+title: "Biological ontologies and machine learning (Supplementary figures)"
+author: Correspondence - t.konopka@qmul.ac.uk
+output:
+  pdf_document:
+    keep_tex: false
+header-includes:
+  \usepackage{caption}
+  \usepackage{float}
+  \usepackage{amsmath}
+  \usepackage{graphicx}
+  \usepackage[ruled]{algorithm2e}
+  \floatplacement{figure}{H}
+  \captionsetup[figure]{labelfont={bf}, name={Figure}, labelsep=period}
+---
+
+
+```{r, analysis.configuration, echo=FALSE}
+source("config.R")
+source("OML_wrappers.R")
+set.seed(1234)
+```
+
+```{r, ontologies, echo=FALSE}
+source("OML_overview.R")
+source("OML_search.R")
+source("OML_graph.R")
+source("OML_casestudies.R")
+```
+
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+```{r supfig.ontologies.data, eval=TRUE, echo=FALSE}
+supfig.selected = field.widestats[id %in% ontologies.selected]
+supfig.selected$filter = ""
+.n = nrow(supfig.selected)
+supfig.not.selected = field.widestats[!id %in% ontologies.selected]
+supfig.not.selected$ID = toupper(supfig.not.selected$id)
+supfig.not.selected$filter = ""
+supfig.not.selected[!id %in% ontologies.recent, "filter"] = "A"
+supfig.not.selected[count_zero_depth>=10, "filter"] = "G"
+supfig.not.selected[!id %in% ontologies.recent & count_zero_depth, "filter"] = "A G"
+supfig.not.selected[num_terms<10, "filter"] = "S"
+supfig.not.selected.1 = supfig.not.selected[seq_len(.n)]
+supfig.not.selected.2 = supfig.not.selected[seq(.n+1, nrow(supfig.not.selected))]
+supfig.item.height = 0.1;
+supfig.heights = 0.45 + supfig.item.height*c(.n, .n, nrow(supfig.not.selected.2))
+```
+
+
+```{r supfig.ontologies.notselected.1, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=supfig.heights[2], fig.cap="\\textbf{Summary of additional ontologies available through the OBO foundry and OLS, but not selected for in-depth analysis (1/2).} Ontologies are summarized (from left to right) by the total number of terms, the depth of terms from the ontology root, number of siblings, number of parents, and number of declared synonymous names. Distributions are displayed as box-plots with whiskers capturing 5\\%-95\\% intervals, boxes 25\\%-75\\% intervals, midlines representing medians, and isolated dots showing the maximal values. The filter code indicates criteria for omitting the ontologies from in-depth analysis: non-recent age ('A'), graph structure ('G')."}
+layout(matrix(1:8, nrow=1, ncol=8, byrow=T),
+	   widths=c(0.85, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.25))
+supfig.onto.summary(supfig.not.selected.1)
+```
+
+
+```{r supfig.ontologies.notselected.2, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=supfig.heights[3], fig.cap="\\textbf{Summary of additional ontologies available through the OBO foundry and OLS, but not selected for in-depth analysis (2/2).} Continued from previous figure."}
+layout(matrix(1:8, nrow=1, ncol=8, byrow=T),
+	   widths=c(0.85, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.25))
+supfig.onto.summary(supfig.not.selected.2)
+```
+
+
+```{r supfig.fbdv, eval=TRUE, echo=FALSE, results="asis", fig.width=6.5, fig.height=4.4, fig.cap="\\textbf{Embeddings of fbdv ontology terms}. All panels represent embeddings of fbdv ontology terms into an abstract 2D space. Dots represent ontology terms and are colored by their position in the ontology hierarchy as roots, intermediate nodes, and leaf nodes. \\textbf{(A-C)} UMAP embeddings constructed from semantic distances based on text-annotations. Panels differ in that neighborhoods are computed using \\textbf{(A)} k=5, \\textbf{(B)} k=9, and \\textbf{(C)} k=15 neighbors. Note that the embedding with k=5 is conceptually equivalent to the embedding in one of the primary figures, but differs because of stochasticity. \\textbf{(D-F)} Embeddings constructed from distances based on the ontology graph structure. Panels generated using \\textbf{(D)} a graph layout algorithm, \\textbf{(E)} node2vec with default arguments, and \\textbf{(F)} UMAP with k=15. "}
+layout(matrix(c(1, 2, 3,
+                4, 4, 4,
+                5, 6, 7), ncol=3, nrow=3, byrow=T),
+	   widths=c(1.0, 1.0, 1.0), heights=c(2.15, 0.1, 2.15))
+#
+# embeddings based on text annotations
+plot_ontology_embedding(fbdv.embeddings$umap.search.k5, fbdv$summary,
+						show.labels=FALSE, legend.pos=c(-24, -3),
+						main="FBDV (fly development) [k=5]")
+multipanelLabel(panel.labels[1])
+plot_ontology_embedding(fbdv.embeddings$umap.search.k9, fbdv$summary,
+						show.labels=FALSE, legend.pos=NULL,
+						main="[k=9]")
+multipanelLabel(panel.labels[2])
+plot_ontology_embedding(fbdv.embeddings$umap.search.k15, fbdv$summary,
+						show.labels=FALSE, legend.pos=NULL,
+						main="[k=15]")
+multipanelLabel(panel.labels[3])
+#
+# empty row
+par(mai=rep(0.01, 4)); plot.new()
+#
+# embeddings based on graph structure
+plot_ontology_embedding(fbdv.embeddings$graph, fbdv$summary,
+						show.labels=FALSE, legend.pos=NULL,
+						xlab="graph 1", ylab="graph 2", main="[graph layout]")
+multipanelLabel(panel.labels[4])
+plot_ontology_embedding(fbdv.embeddings$node2vec, fbdv$summary,
+						show.labels=FALSE, legend.pos=NULL,
+						xlab="node2vec 1", ylab="node2vec 2", main="[node2vec]")
+multipanelLabel(panel.labels[5])
+plot_ontology_embedding(fbdv.embeddings$umap.graph.k15, fbdv$summary,
+						show.labels=FALSE, legend.pos=NULL,
+						main="[umap, graph distance]")
+multipanelLabel(panel.labels[6])
+```
+
+
+```{r supfig.hp, eval=TRUE, echo=FALSE, fig.width=4, fig.height=1.6, fig.cap="\\textbf{Effect of diffusion on self-retrieval and parent-retrieval performance in the HP ontology.} Both panels use HP ontology term names as queries against models trained with HP name and full-text data. Diffusion is driven by HP FT+ data. Panels show effects on \\textbf{(A)} self-retrieval and \\textbf{(B)} parent-retrieval. Note that panel (B) reproduces one of the panels in the primary figures."}
+layout(matrix(c(1, 2), ncol=2, nrow=1, byrow=T),
+	   widths=c(2.0, 2.0))
+#
+# effect of diffusion on self-retrieval
+plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
+		   x="diffvalue", y="precision_self",
+		   xlim=c(0, 2), ylim=c(0, 1),
+		   xlab="diffusion strength", ylab="self retrieval, precision",
+		   main="HP (human phenotypes)")
+multipanelLabel(panel.labels[1])
+add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
+		 x="diffvalue", y="precision_self", Rcssclass=c("lines", "plain"))
+legend(1.1, 0.5, c("name", "plain"), Rcssclass=c("lines"),
+	   title="training data")
+#
+# effect of diffusion on parent retrieval
+plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
+		   x="diffvalue", y="precision_any_parent",
+		   xlim=c(0, 2), ylim=c(0, 1.0),
+		   xlab="diffusion strength", ylab="parent retrieval, precision",
+		   main="HP (human phenotypes)")
+multipanelLabel(panel.labels[2])
+add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
+		 x="diffvalue", y="precision_any_parent", Rcssclass=c("lines", "plain"))
+legend(1.1, 0.5, c("name", "plain"), Rcssclass=c("lines"),
+	   title="training data")
+
+```
+
+
+```{r supfig.hp.examples, eval=TRUE, echo=FALSE, fig.width=5.5, fig.height=4, fig.cap="\\textbf{Examples of HP term mappings that are substantially different from the expected location in the ontology.} Panels \\textbf{(A-D)} show individual query terms and the parent term from the ontology. Nearest neighbors represent outcomes of searches. All searches were performed using parent-driven diffusion."}
+layout(matrix(c(1, 2, 3, 4),
+			  ncol=1, nrow=4, byrow=T),
+	   widths=c(3.2, 3.2), height=c(1, 1, 1, 1))
+plot.hp.example("HP:0040138", x2=0.45, Rcssclass="wide")
+multipanelLabel(panel.labels[1])
+plot.hp.example("HP:0012551", x2=0.45, Rcssclass="wide")
+multipanelLabel(panel.labels[2])
+plot.hp.example("HP:0025153", x2=0.45, Rcssclass="wide")
+multipanelLabel(panel.labels[3])
+plot.hp.example("HP:0009781", x2=0.45, Rcssclass="wide")
+multipanelLabel(panel.labels[4])
+```
+
