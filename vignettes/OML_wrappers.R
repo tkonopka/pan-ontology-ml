@@ -59,6 +59,7 @@ supfig.onto.summary = function(d) {
 #'
 fig.explaining = function(d, y, ylab="Parent retrieval, precision",
                           label.ids=list("_", "_", "_", "_", "_"),
+                          adj=c(0.5, -1),
                           panel.label="a") {
   plot.scatter(d, xy=c("num_terms", y),
                log="x", at=list(x=10^seq(1, 6, by=2), y=seq(0, 1, by=0.25)),
@@ -68,7 +69,7 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
   multipanelLabel(panel.label)
   add.scatter.labels(d[id %in% label.ids[[1]]],
                      xy=c("num_terms", y),
-                     label="ID", log="x", adj=c(0.5, -1))
+                     label="ID", log="x", adj=adj)
   plot.scatter(d, xy=c("avg_num_parents", y),
                log="", at=list(x=c(0.8, 1, 1.2, 1.4, 1.6, 1.8), y=seq(0, 1, by=0.25)),
                xlim=c(0.85, 1.75), ylim=c(0, 1),
@@ -76,7 +77,7 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
                ylab="", Rcssclass=c("large", "next"))
   add.scatter.labels(d[id %in% label.ids[[2]]],
                      xy=c("avg_num_parents", y),
-                     label="ID", log="", adj=c(0.5, -1))
+                     label="ID", log="", adj=adj)
   plot.scatter(d, xy=c("avg_norm_depth", y),
                log="", at=list(x=c(0, 0.5, 1, 1.5, 2), y=seq(0, 1, by=0.25)),
                xlim=c(0.0, 1.5), ylim=c(0, 1),
@@ -84,7 +85,7 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
                ylab="", Rcssclass=c("large", "next"))
   add.scatter.labels(d[id %in% label.ids[[3]]],
                      xy=c("avg_norm_depth", y),
-                     label="ID", log="", adj=c(0.5, -1))
+                     label="ID", log="", adj=adj)
   plot.scatter(d, xy=c("avg_chars_def", y),
                log="x", at=list(x=10^seq(0, 6), y=seq(0, 1, by=0.25)),
                xlim=c(1, 600), ylim=c(0, 1),
@@ -92,7 +93,7 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
                ylab="", Rcssclass=c("large", "next", "anno"))
   add.scatter.labels(d[id %in% label.ids[[4]]],
                      xy=c("avg_chars_def", y),
-                     label="ID", log="x", adj=c(0.5, -1))
+                     label="ID", log="x", adj=adj)
   plot.scatter(d, xy=c("avg_chars_comments", y),
                log="x", at=list(x=10^seq(0, 2), y=seq(0, 1, by=0.25)),
                xlim=c(1, 300), ylim=c(0, 1),
@@ -101,7 +102,7 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
                Rcssclass=c("large", "next", "anno"))
   add.scatter.labels(d[id %in% label.ids[[5]]],
                      xy=c("avg_chars_comments", y),
-                     label="ID", log="x", adj=c(0.5, -1))
+                     label="ID", log="x", adj=adj)
   invisible(NULL)
 }
 

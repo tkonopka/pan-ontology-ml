@@ -58,11 +58,11 @@ read.search.results = function(oboname,
 
 #' evaluate whether search results find self ids and parent ids
 make.search.perf = function(oboname, configs=search.configs,
-                            parents=ontologies.parents) {
+                            parents=ontologies.parents,
+                            template=file.templates$search.results) {
   result = list()
   obo.parents = parents[[oboname]]
-  search.results = read.search.results(oboname, configs,
-                                       template=file.templates$search.results)
+  search.results = read.search.results(oboname, configs, template=template)
   for (i in seq_along(search.results)) {
     .id = names(search.results)[i]
     i.data = search.results[[.id]]

@@ -108,7 +108,8 @@ collapse.search.distances = function(search.distances) {
 
 #' wrapper to read search results, evaluate performance, summarize
 make.search.diff.summary = function(oboname) {
-  search.perf = make.search.perf(oboname, diff.configs)
+  search.perf = make.search.perf(oboname, diff.configs,
+                                 template=file.templates$searchdiff.results)
   make.search.perf.summary(oboname, search.perf,
                            configs=diff.configs)
 }

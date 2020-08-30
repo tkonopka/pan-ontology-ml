@@ -9,7 +9,7 @@ do
   echo ""
   echo $OBONAME
   cd $OBONAME
-  for TYPE in parents plain
+  for TYPE in plain
   do
     $CM remove --config config-obo-$OBONAME-$TYPE.yaml
   done

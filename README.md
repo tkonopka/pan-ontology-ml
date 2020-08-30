@@ -44,7 +44,7 @@ these, navigate into the `vignettes` directory, launch R, and render the vignett
 
 ```{r}
 library(rmarkdown)
-render("OntoML.Rmd")
+render("OntoML.Rmd")        
 render("OntoML_Supplementary.Rmd")
 ```
 

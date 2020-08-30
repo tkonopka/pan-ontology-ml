@@ -95,8 +95,6 @@ this on a subset of ontologies. The subset can be specified via a text file.
 ```
 
 
-
-
 ## Follow-up calculations
 
 Follow-up calculations support visualizations in the manuscript. 
@@ -108,6 +106,4 @@ Follow-up calculations support visualizations in the manuscript.
 ./prep-node2vec.R
 ./node2vec.bash
 ```
-
-
 

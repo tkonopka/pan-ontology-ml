@@ -13,7 +13,7 @@ CM=../../../crossmap
 $CM features --config config-obo-hp.yaml --pretty \
              | gzip > hp-features.json.gz
 
-# create vector reresentations for certain ids
+# create vector representations for certain ids
 $CM vectors --config config-obo-hp.yaml --pretty \
             --ids HP:0020134,HP:0012085,HP:0011991 \
             | gzip > hp-vectors-HP_0020134.json.gz

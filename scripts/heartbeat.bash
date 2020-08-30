@@ -17,6 +17,8 @@ $CB obo --obo ../../obo/mp.obo --obo_root MP:0004085 \
 $CB obo --obo ../../obo/mp.obo --obo_root MP:0004085 \
         --obo_aux top,comments,synonyms --name mp-heartbeat-plain
 $CB obo --obo ../../obo/mp.obo --obo_root MP:0004085 \
+        --obo_aux nodef --name mp-heartbeat-name
+$CB obo --obo ../../obo/mp.obo --obo_root MP:0004085 \
         --obo_only_meta --name mp-heartbeat-metadata
 $CB obo_summary --obo ../../obo/mp.obo --obo_root MP:0004085 \
         --name mp-heartbeat
