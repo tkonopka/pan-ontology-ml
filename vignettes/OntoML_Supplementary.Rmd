@@ -73,7 +73,7 @@ layout(matrix(c(1, 2, 3,
 #
 # embeddings based on text annotations
 plot_ontology_embedding(fbdv.embeddings$umap.search.k5, fbdv$summary,
-						show.labels=FALSE, legend.pos=c(-24, -3),
+						show.labels=FALSE, legend.pos=c(-28, 22),
 						main="FBDV (fly development) [k=5]")
 multipanelLabel(panel.labels[1])
 plot_ontology_embedding(fbdv.embeddings$umap.search.k9, fbdv$summary,
