@@ -4,6 +4,7 @@
 aws
 crossmap*
 crossprep*
+node2vec
 *temp.bash
 *out
 
