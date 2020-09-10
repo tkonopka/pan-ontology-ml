@@ -209,7 +209,7 @@ head(perf.model.data[order(precision_any_parent), c("id", "precision_any_parent"
 
 \clearpage
 
-```{r fig.casestudies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=3.4, fig.cap="\\textbf{Feedback from ML for ontology development.} \\textbf{(A)} Unsupervised UMAP embedding of FBDV ontology terms (dots) according to their similarity of text-based annotations. Selected groups of terms are labeled manually. \\textbf{(B)} Parent-retrieval performance in the original FBDV ontology and a modified version with more hierarchical relations. \\textbf{(C)} Effect of diffusion on parent retrieval in the human phenotype ontology, HP. \\textbf{(D)} Summary of errors in parent retrieval without (above) and with (below) diffusion. \\textbf{(E)} Example of an ontology term with a large parent-retrieval error, both with and without diffusion. \\textbf{(F)} Activation heatmap for exemplar term representations."}
+```{r fig.casestudies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=3.4, fig.cap="\\textbf{Feedback from ML for ontology development.} \\textbf{(A)} Unsupervised UMAP embedding of FBDV ontology terms (dots) according to their similarity of text-based annotations. Selected groups of terms are labeled manually. \\textbf{(B)} Parent-retrieval performance in the original FBDV ontology and a modified version with more hierarchical relations. \\textbf{(C)} Effect of diffusion on parent retrieval in the human phenotype ontology, HP. Two lines represent results on models trained with names and FT datasets; all queries performed with names data. \\textbf{(D)} Summary of errors in parent retrieval without (above) and with (below) diffusion. \\textbf{(E)} Example of an ontology term with a large parent-retrieval error, both with and without diffusion. \\textbf{(F)} Activation heatmap for exemplar term representations."}
 layout(matrix(c(1, 1, 3, 4, 5,
 				1, 1, 3, 4, 6,
                 1, 1, 7, 7, 7,
@@ -267,7 +267,7 @@ plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 		   main="HP (human phenotypes)")
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		  x="diffvalue", y="precision_any_parent", Rcssclass=c("lines", "plain"))
-legend(1.1, 0.4, c("name", "plain"), Rcssclass=c("lines"),
+legend(1.1, 0.4, c("name", "FT"), Rcssclass=c("lines"),
 	   title="training data")
 multipanelLabel(panel.labels[3])
 # draw two histograms
