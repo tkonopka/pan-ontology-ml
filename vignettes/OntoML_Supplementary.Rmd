@@ -3,7 +3,7 @@ title: "Biological ontologies and machine learning (Supplementary figures)"
 author: Correspondence - t.konopka@qmul.ac.uk
 output:
   pdf_document:
-    keep_tex: false
+    keep_tex: true
 header-includes:
   \usepackage{caption}
   \usepackage{float}
@@ -65,7 +65,7 @@ supfig.onto.summary(supfig.not.selected.2)
 ```
 
 
-```{r supfig.fbdv, eval=TRUE, echo=FALSE, results="asis", fig.width=6.5, fig.height=4.4, fig.cap="\\textbf{Embeddings of fbdv ontology terms}. All panels represent embeddings of fbdv ontology terms into an abstract 2D space. Dots represent ontology terms and are colored by their position in the ontology hierarchy as roots, intermediate nodes, and leaf nodes. \\textbf{(A-C)} UMAP embeddings constructed from semantic distances based on text-annotations. Panels differ in that neighborhoods are computed using \\textbf{(A)} k=5, \\textbf{(B)} k=9, and \\textbf{(C)} k=15 neighbors. Note that the embedding with k=5 is conceptually equivalent to the embedding in one of the primary figures, but differs because of stochasticity. \\textbf{(D-F)} Embeddings constructed from distances based on the ontology graph structure. Panels generated using \\textbf{(D)} a graph layout algorithm, \\textbf{(E)} node2vec with default arguments, and \\textbf{(F)} UMAP with k=15. "}
+```{r supfig.fbdv, eval=TRUE, echo=FALSE, results="asis", fig.width=6.5, fig.height=4.4, fig.cap="\\textbf{Embeddings of FBDV ontology terms}. All panels represent embeddings of FBDV ontology terms into an abstract 2D space. Dots represent ontology terms and are colored by their position in the ontology hierarchy as roots, intermediate nodes, and leaf nodes. \\textbf{(A-C)} UMAP embeddings constructed from semantic distances based on text-annotations. Panels differ in that neighborhoods are computed using \\textbf{(A)} k=5, \\textbf{(B)} k=9, and \\textbf{(C)} k=15 neighbors. The embedding with k=5 is conceptually equivalent to the embedding in one of the primary figures, but differs because of stochasticity. \\textbf{(D-F)} Embeddings constructed from distances based on the ontology graph structure. Panels generated using \\textbf{(D)} a graph layout algorithm, \\textbf{(E)} node2vec with default arguments, and \\textbf{(F)} UMAP with k=15. "}
 layout(matrix(c(1, 2, 3,
                 4, 4, 4,
                 5, 6, 7), ncol=3, nrow=3, byrow=T),
@@ -104,7 +104,7 @@ multipanelLabel(panel.labels[6])
 ```
 
 
-```{r supfig.hp, eval=TRUE, echo=FALSE, fig.width=4, fig.height=1.6, fig.cap="\\textbf{Effect of diffusion on self-retrieval and parent-retrieval performance in the HP ontology.} Both panels use HP ontology term names as queries against models trained with HP name and full-text data. Diffusion is driven by HP FT+ data. Panels show effects on \\textbf{(A)} self-retrieval and \\textbf{(B)} parent-retrieval. Note that panel (B) reproduces one of the panels in the primary figures."}
+```{r supfig.hp, eval=TRUE, echo=FALSE, fig.width=4, fig.height=1.6, fig.cap="\\textbf{Effect of diffusion on self-retrieval and parent-retrieval performance in the HP ontology.} Both panels use HP ontology term names as queries against models trained with HP name and full-text (FT) data. Diffusion is driven by HP FT+ data. Panels show effects on \\textbf{(A)} self-retrieval and \\textbf{(B)} parent-retrieval. Panel (B) reproduces one of the panels in the primary figures."}
 layout(matrix(c(1, 2), ncol=2, nrow=1, byrow=T),
 	   widths=c(2.0, 2.0))
 #
@@ -117,7 +117,7 @@ plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 multipanelLabel(panel.labels[1])
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		 x="diffvalue", y="precision_self", Rcssclass=c("lines", "plain"))
-legend(1.1, 0.5, c("name", "plain"), Rcssclass=c("lines"),
+legend(1.1, 0.5, c("name", "FT"), Rcssclass=c("lines"),
 	   title="training data")
 #
 # effect of diffusion on parent retrieval
@@ -129,9 +129,8 @@ plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 multipanelLabel(panel.labels[2])
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		 x="diffvalue", y="precision_any_parent", Rcssclass=c("lines", "plain"))
-legend(1.1, 0.5, c("name", "plain"), Rcssclass=c("lines"),
+legend(1.1, 0.5, c("name", "FT"), Rcssclass=c("lines"),
 	   title="training data")
-
 ```
 
 

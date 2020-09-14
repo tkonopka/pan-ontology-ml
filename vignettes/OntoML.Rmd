@@ -3,7 +3,7 @@ title: "Biological ontologies and machine learning"
 author: Correspondence - t.konopka@qmul.ac.uk
 output:
   pdf_document:
-    keep_tex: false
+    keep_tex: true
 header-includes:
   \usepackage{caption}
   \usepackage{float}
@@ -30,7 +30,7 @@ source("OML_casestudies.R")
 
 # Results
 
-```{r fig.all, eval=TRUE, echo=FALSE, fig.width=4.8, fig.height=1.3, fig.cap="\\textbf{Summary of biological ontologies.} All panels show stratification of a collection of ontologies by \\textbf{(A)} the number of terms (classes), \\textbf{(B)} the time since last update, and \\textbf{(C)} the number of their disconnected components. Bars in a dark color convey the criteria used to select ontologies for subsequent analysis."}
+```{r fig.all, eval=TRUE, echo=FALSE, fig.width=4.8, fig.height=1.3, fig.cap="\\textbf{Summary of biological ontologies.} All panels show stratification of a collection of ontologies by \\textbf{(A)} the number of terms (classes), \\textbf{(B)} the time since last update, and \\textbf{(C)} the number of their disconnected components. Bar colors convey the criteria used to select ontologies for subsequent analysis."}
 layout(matrix(c(1,2,3),	ncol=3, nrow=1, byrow=T),
        widths=c(1.6, 1.6, 1.6), height=c(1.2, 1.2, 2.7))
 #
@@ -75,7 +75,7 @@ Number more than 10 roots: `r sum(field.widestats$count_zero_depth>10, na.rm=TRU
 
 
 
-```{r fig.ontologies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=6.7, fig.cap="\\textbf{Summary of ontology definitions.} Summary statistics for selected biological ontologies. Vertical panels display the number of terms in each ontology, the distribution of term depths (normalized by the size of each ontology), the distribution of the number of parents for each term, the proportion of terms lacking a text definition, the distribution of number of characters within text definitions, and the distribution of the number of synonyms."}
+```{r fig.ontologies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=6.7, fig.cap="\\textbf{Summary statistics for selected biological ontologies.} Vertical panels display the number of terms in each ontology, the distribution of term depths (normalized by the size of each ontology), the distribution of the number of parents for each term, the proportion of terms lacking a text definition, the distribution of number of characters within text definitions, and the distribution of the number of synonyms."}
 layout(matrix(c(1,2,3,4,5,6,7), ncol=7, nrow=1, byrow=T),
        widths=c(1.15, 0.9, 0.9, 0.9, 0.9, 0.9))
 fig.widestats = field.widestats[id %in% ontologies.selected]
@@ -296,7 +296,7 @@ multipanelLabel(panel.labels[5])
 #
 # heatmap with features
 hp.eg.ids = c("HP:0020134_name", "HP:0020134_plain",
-			  "HP:0012085_plain", "HP:0011991_plain")
+			  "HP:0011991_plain", "HP:0012085_plain")
 .m = hp.eg.matrix[, hp.eg.ids]
 maxval = function(x) {
 	suppressWarnings(max(x, na.rm=TRUE))

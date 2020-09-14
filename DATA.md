@@ -5,7 +5,7 @@ The content can be used together with code in
 [pan-ontology-ml](www.github.com/tkonopka/pan-ontology-ml).
 
 
-# `data` directory
+## `data` directory
 
  - `obo-db.yaml` - docker-compose configuration that launches a mongodb 
  instance. A database setup is only required if data files are used together 
@@ -20,7 +20,7 @@ The content can be used together with code in
  Service (processed table)
  
 
-# `data/wiktionary` directory
+## `data/wiktionary` directory
 
 Raw data from the English-language [wiktionary](www.wiktionary.org) and 
 processed yaml.
@@ -31,7 +31,7 @@ The raw wiktionary file was downloaded from a publicly available
 terms of use.
 
 
-# `data/owl` directory
+## `data/owl` directory
 
 Raw downloaded `.owl` files from the OBO foundry and the OLS. Note that `.owl` 
 files were only downloaded when `.obo` files were not available.
@@ -41,7 +41,7 @@ files for terms of use. This archive reproduces raw files to document the
 data versions used to generate study results.
 
 
-# `data/obo` directory
+## `data/obo` directory
 
 Most files are raw downloaded `.obo` files from the OBO foundry and from the 
 OLS. Some files represent conversions from the `.owl` format.
@@ -51,7 +51,7 @@ files for terms of use. This archive reproduces raw files to document the data
 version used to generate study results.
 
 
-# `data/instances` directory
+## `data/instances` directory
 
 The `instances` directory holds one subdirectory for each ontology. Files 
 represent processed ontology content and outputs from analyses.

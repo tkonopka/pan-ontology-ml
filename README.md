@@ -9,14 +9,14 @@ similarity measures as captured by machine-learning models.
 ## Setup
 
 This repository can be used to perform an analysis from scratch, or in 
-conjunction with a prepared dataset available at [zenodo]().
+conjunction with a prepared dataset.
 
 ### Analysis from scratch
 
 After cloning the analysis repository, set up the following files and 
 directories.
 
- - `crossmap` script - bash script that executes the [crossma](https://github.com/tkonopka/crossmap) program. 
+ - `crossmap` script - bash script that executes the [crossmap](https://github.com/tkonopka/crossmap) program. 
  - `crossprep` script - bash script that executes the [crossprep](https://github.com/tkonopka/crossmap/tree/master/crossprep) python utility.
  - `data` directory - a directory that will hold data files and processed items.
  - a mongodb database compatible with 
@@ -32,14 +32,15 @@ calculations on each ontology. The total running time may well exceed 100 hours.
 
 ### Analysis using prepared data
 
-A snapshot of required datasets is available at [zenodo]. Download the snapshot
-zip file into the repository root and uncompress it. That should create a 
-directory `data` with all raw and processed  
+A snapshot of required datasets is available at 
+[zenodo](https://zenodo.org/record/4028169). 
+Download the snapshot zip file into the repository root and uncompress it. 
+That should create a directory `data` with all raw and processed files.
 
 
 ### Visualizations
 
-Visualizations of the analyses are achieved via rmarkdown vignettes. To create
+Visualizations are achieved via rmarkdown vignettes. To create
 these, navigate into the `vignettes` directory, launch R, and render the vignettes.
 
 ```{r}
