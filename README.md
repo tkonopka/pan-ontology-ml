@@ -33,7 +33,7 @@ calculations on each ontology. The total running time may well exceed 100 hours.
 ### Analysis using prepared data
 
 A snapshot of required datasets is available at 
-[zenodo](https://zenodo.org/record/4028169). 
+[zenodo](https://zenodo.org/record/4029258). 
 Download the snapshot zip file into the repository root and uncompress it. 
 That should create a directory `data` with all raw and processed files.
 
