@@ -6,7 +6,7 @@
 diff.configs = expand.grid(list(obotype=c("name", "plain"),
                                 datatype="name",
                                 difftype=c("plain", "parents"),
-                                diffvalue=seq(0, 2, by=0.2)),
+                                diffvalue=seq(0, 0.5, by=0.05)),
                            stringsAsFactors=FALSE)
 
 
@@ -204,7 +204,7 @@ if (!assignc("hp.distances")) {
   hp.pathlen = evaluate.search.distances(hp$search$plain.data.name.diff.NA.NA,
                                          ontograph=hp$graph, cores=2)
   savec(hp.pathlen)
-  hp.pathlen.diff = evaluate.search.distances(hp$search$plain.data.name.diff.parents.1,
+  hp.pathlen.diff = evaluate.search.distances(hp$search$plain.data.name.diff.parents.0.3,
                                          ontograph=hp$graph, cores=2)
   savec(hp.pathlen.diff)
   hp.distances = list(nodiff=collapse.search.distances(hp.pathlen),

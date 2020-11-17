@@ -22,11 +22,13 @@ add.ontologyterm = function(d, x=0, y=1, show.ids=TRUE,
 
   text(x, y, main, Rcssclass="main")
   ycoord = y-seq_len(nrow(d))*line.height
+  d_name = gsub("morphology", "morph.", d$name)
+  d_name = gsub("physiology", "physiol.", d_name)
   if (show.ids) {
     text(x, ycoord, d$id, Rcssclass="id")
-    text(x+id.width, ycoord, d$name, Rcssclass="term")
+    text(x+id.width, ycoord, d_name, Rcssclass="term")
   } else {
-    text(x, ycoord, d$name, Rcssclass="term")
+    text(x, ycoord, d_name, Rcssclass="term")
   }
 
 }

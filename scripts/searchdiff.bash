@@ -10,7 +10,7 @@ do
   echo ""
   echo $OBONAME
   cd $OBONAME
-  for DIFF in 0 0.2 0.4 0.6 0.8 1 1.2 1.4 1.6 1.8 2
+  for DIFF in 0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
   do
     for TYPE1 in name plain
     do

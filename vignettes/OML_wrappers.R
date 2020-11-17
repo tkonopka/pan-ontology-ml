@@ -117,9 +117,9 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
 #' @param x2 numeric, x-position of second column
 #' @param Rcssclass character style class
 #'
-plot.hp.example = function(hp.id, x2=0.55, Rcssclass=NULL) {
+plot.hp.example = function(hp.id, x2=0.5, Rcssclass=NULL) {
   hp.eg.parent = hp$graph$edges[id==hp.id]$target
-  hp.eg.hits = hp$search$plain.data.name.diff.parents.1[id==hp.id]$target
+  hp.eg.hits = hp$search$plain.data.name.diff.parents.0.3[id==hp.id]$target
   hp.eg.hits = hp.eg.hits[hp.eg.hits != hp.id]
   hp.eg.hits = data.table(id=hp.eg.hits, rank=seq_along(hp.eg.hits))
   line.height = RcssValue("ontologyterm", "line.height", default=0.2,

@@ -262,12 +262,12 @@ multipanelLabel(panel.labels[2])
 # line graph with diffusion settings
 plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 		   x="diffvalue", y="precision_any_parent",
-		   xlim=c(0, 2), ylim=c(0, 0.7),
+		   xlim=c(0, 0.5), ylim=c(0, 0.62),
            xlab="diffusion strength", ylab="parent retrieval, precision",
 		   main="HP (human phenotypes)")
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		  x="diffvalue", y="precision_any_parent", Rcssclass=c("lines", "plain"))
-legend(1.1, 0.4, c("name", "FT"), Rcssclass=c("lines"),
+legend(0.25, 0.4, c("name", "FT"), Rcssclass=c("lines"),
 	   title="training data")
 multipanelLabel(panel.labels[3])
 # draw two histograms
@@ -277,27 +277,28 @@ counts.diff = hp.distances$diff[id %in% hp.common.terms]$pathlen_bestN
 parplot(c(0, 1), Rcssclass=c("inthist", "tall"))
 mtext(side=2, "HP terms", Rcssclass=c("inthist", "ylab"))
 multipanelLabel(panel.labels[4])
-plot.int.hist(counts.nodiff, main="Search for parent terms",
-              ylim=c(0, 10000), xlim=c(-0.5, 12.5), Rcssclass=c("top", "nodiff"))
+plot.int.hist(counts.nodiff, main="Parent retrieval",
+              ylim=c(0, 9000), xlim=c(-0.5, 12.5), Rcssclass=c("top", "nodiff"))
 lines(c(3.5, 3.5, 12.5), c(1200, 2000, 2000), Rcssclass=c("inthist", "label"))
 num.high.nodiff = sum(counts.nodiff >= 4)
 text(8, 2900, paste0(num.high.nodiff, " terms"), Rcssclass=c("inthits", "label"))
 plot.int.hist(counts.diff, main="(with diffusion)",
 			  xlab="path length to parent (best of k=5)",
 			  show.x.labels=TRUE,
-			  ylim=c(0, 10000), xlim=c(-0.5, 12.5), Rcssclass=c("bottom", "diff"))
+			  ylim=c(0, 9000), xlim=c(-0.5, 12.5), Rcssclass=c("bottom", "diff"))
 lines(c(3.5, 3.5, 12.5), c(1200, 2000, 2000), Rcssclass=c("inthist", "label"))
 num.high.diff = sum(counts.diff >= 4)
 text(8, 2900, paste0(num.high.diff, " terms"), Rcssclass=c("inthits", "label"))
 #
 # panel with example mapping for one hp term
-plot.hp.example("HP:0020134")
+plot.hp.example("HP:0020134", x2=0.52)
 multipanelLabel(panel.labels[5])
 #
 # heatmap with features
 hp.eg.ids = c("HP:0020134_name", "HP:0020134_plain",
 			  "HP:0011991_plain", "HP:0012085_plain")
 .m = hp.eg.matrix[, hp.eg.ids]
+colnames(.m) = gsub("plain", "FT", colnames(.m))
 maxval = function(x) {
 	suppressWarnings(max(x, na.rm=TRUE))
 }
@@ -326,6 +327,13 @@ Parent-retrieval in modified ontologies
 
 ```{r}
 modified.performance.summary[obotype=="plain" & datatype=="plain"]
+```
+
+Performance in hp parent retrieval before and after diffusion
+
+```{r}
+hp.search.diff.summary[abs(diffvalue-0.0)<0.01 & obotype=="plain" & difftype=="parents"]
+hp.search.diff.summary[abs(diffvalue-0.3)<0.01 & obotype=="plain" & difftype=="parents"]
 ```
 
 Path length for HP example

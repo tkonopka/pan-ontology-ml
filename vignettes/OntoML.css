@@ -689,14 +689,14 @@ legend.lines {
 
 ontologyterm {
   line.height: 0.25;
-  id.width: 0.14;
+  id.width: 0.13;
 }
 ontologyterm.wide {
   id.width: 0.1;
   line.height: 0.22;
 }
 par.ontologyterm {
-  mai: 0.06 0.02 0.26 0.1;
+  mai: 0.06 0.15 0.2 0.1;
   mgp: 0 0 0;
 }
 plot.ontologyterm {
@@ -705,6 +705,8 @@ plot.ontologyterm {
   xlab: ;
   ylab: ;
   main: ;
+  xaxs: i;
+  yaxs: i;
 }
 text.ontologyterm {
   adj: 0 0;

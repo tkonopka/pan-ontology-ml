@@ -111,25 +111,25 @@ layout(matrix(c(1, 2), ncol=2, nrow=1, byrow=T),
 # effect of diffusion on self-retrieval
 plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 		   x="diffvalue", y="precision_self",
-		   xlim=c(0, 2), ylim=c(0, 1),
+		   xlim=c(0, 0.5), ylim=c(0, 1),
 		   xlab="diffusion strength", ylab="self retrieval, precision",
 		   main="HP (human phenotypes)")
 multipanelLabel(panel.labels[1])
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		 x="diffvalue", y="precision_self", Rcssclass=c("lines", "plain"))
-legend(1.1, 0.5, c("name", "FT"), Rcssclass=c("lines"),
+legend(0.25, 0.5, c("name", "FT"), Rcssclass=c("lines"),
 	   title="training data")
 #
 # effect of diffusion on parent retrieval
 plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 		   x="diffvalue", y="precision_any_parent",
-		   xlim=c(0, 2), ylim=c(0, 1.0),
+		   xlim=c(0, 0.5), ylim=c(0, 1.0),
 		   xlab="diffusion strength", ylab="parent retrieval, precision",
 		   main="HP (human phenotypes)")
 multipanelLabel(panel.labels[2])
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		 x="diffvalue", y="precision_any_parent", Rcssclass=c("lines", "plain"))
-legend(1.1, 0.5, c("name", "FT"), Rcssclass=c("lines"),
+legend(0.25, 0.5, c("name", "FT"), Rcssclass=c("lines"),
 	   title="training data")
 ```
 
