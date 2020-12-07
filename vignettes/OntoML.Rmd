@@ -39,7 +39,7 @@ plot.custom.histogram(ontologies.summary$num_terms,
                       intervals=c("< 10"=10, "10-100"=100,
                                   "100-1K"=1000, "1K-10K"=10000,
                                   "10K-100K"=100000, "100K-1M"=1e6, "> 1M"=Inf),
-					  filtered="< 10",
+                      filtered="< 10",
                       main="Size (number of terms)", ylab="Ontologies")
 multipanelLabel(panel.labels[1])
 #
@@ -73,6 +73,11 @@ Number single root: `r sum(field.widestats$count_zero_depth==1, na.rm=TRUE)`
 
 Number more than 10 roots: `r sum(field.widestats$count_zero_depth>10, na.rm=TRUE)`
 
+Distribution of median characters in definitions:
+
+ ```{r}
+summary(field.widestats[q50_chars_def>0]$q50_chars_def)
+```
 
 
 ```{r fig.ontologies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=6.7, fig.cap="\\textbf{Summary statistics for selected biological ontologies.} Vertical panels display the number of terms in each ontology, the distribution of term depths (normalized by the size of each ontology), the distribution of the number of parents for each term, the proportion of terms lacking a text definition, the distribution of number of characters within text definitions, and the distribution of the number of synonyms."}

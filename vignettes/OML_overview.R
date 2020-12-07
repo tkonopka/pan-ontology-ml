@@ -124,7 +124,8 @@ if (!exists("ontologies.selected")) {
 ontologies.summary.table = file.path(tables.dir, "ontologies-summary.tsv")
 if (!file.exists(ontologies.summary.table)) {
   .temp = merge(ontologies.summary[, c("id", "title", "date", "source", "age")],
-                field.widestats, by="id")
+                field.widestats,
+                by="id", all.x=TRUE)
   fwrite(.temp, file=ontologies.summary.table, sep="\t")
   rm(.temp)
 }
