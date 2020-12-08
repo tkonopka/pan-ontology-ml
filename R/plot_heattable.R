@@ -15,7 +15,7 @@
 #' @param Rcssclass character, style class
 plot.heattable = function(m1, m2=NULL,
                           color.fun=magma, color.direction=1,
-                          xlab="", ylab="", legend.main="Precision",
+                          xlab="", ylab="", legend.main="Hit rate",
                           main1="", main2="",
                           digits=2,
                           Rcssclass=c()) {

@@ -30,7 +30,7 @@ source("OML_casestudies.R")
 
 # Results
 
-```{r fig.all, eval=TRUE, echo=FALSE, fig.width=4.8, fig.height=1.3, fig.cap="\\textbf{Summary of biological ontologies.} All panels show stratification of a collection of ontologies by \\textbf{(A)} the number of terms (classes), \\textbf{(B)} the time since last update, and \\textbf{(C)} the number of their disconnected components. Bar colors convey the criteria used to select ontologies for subsequent analysis."}
+```{r fig.all, eval=TRUE, echo=FALSE, fig.width=4.8, fig.height=1.3, fig.cap="\\textbf{Summary of biological ontologies.} Panels show a collection of ontologies stratified by \\textbf{(A)} the number of terms (classes), \\textbf{(B)} the time since last update, and \\textbf{(C)} the number of disconnected components. Ontologies in light-colored groups were excluded from subsequent analysis."}
 layout(matrix(c(1,2,3),	ncol=3, nrow=1, byrow=T),
        widths=c(1.6, 1.6, 1.6), height=c(1.2, 1.2, 2.7))
 #
@@ -80,7 +80,7 @@ summary(field.widestats[q50_chars_def>0]$q50_chars_def)
 ```
 
 
-```{r fig.ontologies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=6.7, fig.cap="\\textbf{Summary statistics for selected biological ontologies.} Vertical panels display the number of terms in each ontology, the distribution of term depths (normalized by the size of each ontology), the distribution of the number of parents for each term, the proportion of terms lacking a text definition, the distribution of number of characters within text definitions, and the distribution of the number of synonyms."}
+```{r fig.ontologies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=6.7, fig.cap="\\textbf{Summary statistics for selected ontologies.} Vertical panels display the number of terms in each ontology, the distribution of term depths (normalized by the size of each ontology), the distribution of the number of parents for each term, the proportion of terms lacking a text definition, the distribution of number of characters in text definitions, and the distribution of the number of synonyms. Distributions are visualized by a median (central bar), interquartile range (boxes), 5\\%-95\\% quantile range (whiskers), and maximal values (dots)."}
 layout(matrix(c(1,2,3,4,5,6,7), ncol=7, nrow=1, byrow=T),
        widths=c(1.15, 0.9, 0.9, 0.9, 0.9, 0.9))
 fig.widestats = field.widestats[id %in% ontologies.selected]
@@ -89,7 +89,7 @@ fig.onto.summary(fig.widestats[order(num_terms, decreasing=TRUE)])
 ```
 
 
-```{r fig.reconstruction, eval=TRUE, echo=FALSE, fig.width=3.0, fig.height=3.8, fig.cap="\\textbf{Reconstruction of ontologies hierarchy.} \\textbf{(A)} Example of text associated with an ontology term from the mammalian phenotype (MP) ontology. One version includes only the term name, another version includes full-text (FT), and another has full text plus definitions of parent terms (FP+). \\textbf{(B)} Graph for a branch of the MP ontology. Dots represent ontology terms, arrows represent directional 'is a' relationships. The dark dot is the root node. \\textbf{(C)} Example of an ontology-reconstruction calculation using k nearest-neighbor search. The first view shows first-ranked predictions; the second view shows the top three predictions. Labels 'hit' and 'miss' indicate when text from a given node is matched to itself via search. \\textbf{(D)} Summary of reconstruction performance averaged over all ontologies."}
+```{r fig.reconstruction, eval=TRUE, echo=FALSE, fig.width=3.0, fig.height=3.8, fig.cap="\\textbf{Reconstruction of ontologies hierarchy.} \\textbf{(A)} Example of text associated with an ontology term from the mammalian phenotype (MP) ontology. One version includes only the term name, another version includes full-text (FT), and another has full text plus definitions of parent terms (FP+). \\textbf{(B)} Graph for a branch of the MP ontology. Dots represent ontology terms, arrows represent directional 'is a' relationships. The dark dot is the root node. \\textbf{(C)} Example of an ontology-reconstruction calculation using nearest-neighbor search. The first view shows first-ranked predictions (k=1); the second view shows the top three predictions (k=1,2,3). Labels 'hit' and 'miss' indicate when text from a given node is matched to itself via search. \\textbf{(D)} Summary of reconstruction performance averaged over the selected ontologies."}
 layout(matrix(c(1,1,1,
 				2,3,4,
 				5,6,6,
@@ -170,7 +170,7 @@ perf.data.wide[precision_any_parent_parents_parents > precision_any_parent_plain
 \clearpage
 
 
-```{r fig.explaining, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=3.24, fig.cap="\\textbf{Factors affecting empirical ontology reconstruction based on text descriptions.} All panels show relations between precision from machine learning models trained and queried with FT data. Vertical axes show \\textbf{(A)} self-retrieval and \\textbf{(B)} parent-retrieval precision. Selected ontologies are labeled manually. "}
+```{r fig.explaining, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=3.24, fig.cap="\\textbf{Factors affecting ontology reconstruction from text descriptions.} Panels show relations between scores from machine learning models, trained and queried with FT data, and various explanatory variables. Vertical axes show \\textbf{(A)} self-retrieval and \\textbf{(B)} parent-retrieval scores. Dots represent ontologies. Selected dots are labeled manually. "}
 layout(matrix(c(1, 2, 3, 4, 5,
 				6, 7, 8, 9, 10),
 			  ncol=5, nrow=2, byrow=T),
@@ -181,11 +181,11 @@ perf.model.data$ID = toupper(perf.model.data$id)
 perf.model.data$avg_chars_def = 1+perf.model.data$avg_chars_def
 perf.model.data$avg_chars_comments = 1+perf.model.data$avg_chars_comments
 fig.explaining(perf.model.data, "precision_self",
-			   ylab="self retrieval, precision", adj=c(0.2, -1),
+			   ylab="self retrieval", adj=c(0.2, -1),
 			   panel.label=panel.labels[1],
 			   label.ids=list("olatdv", "gno", "ncbitaxon", "lbo", "fbdv"))
 fig.explaining(perf.model.data, "precision_any_parent",
-			   ylab="parent retrieval, precision", adj=c(0.2, -1),
+			   ylab="parent retrieval", adj=c(0.2, -1),
 			   panel.label=panel.labels[2],
 			   label.ids=list("olatdv", "gno", c("ncbitaxon", "omo"),
 							  c("lbo"), c("fbdv")))
@@ -214,7 +214,7 @@ head(perf.model.data[order(precision_any_parent), c("id", "precision_any_parent"
 
 \clearpage
 
-```{r fig.casestudies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=3.4, fig.cap="\\textbf{Feedback from ML for ontology development.} \\textbf{(A)} Unsupervised UMAP embedding of FBDV ontology terms (dots) according to their similarity of text-based annotations. Selected groups of terms are labeled manually. \\textbf{(B)} Parent-retrieval performance in the original FBDV ontology and a modified version with more hierarchical relations. \\textbf{(C)} Effect of diffusion on parent retrieval in the human phenotype ontology, HP. Two lines represent results on models trained with names and FT datasets; all queries performed with names data. \\textbf{(D)} Summary of errors in parent retrieval without (above) and with (below) diffusion. \\textbf{(E)} Example of an ontology term with a large parent-retrieval error, both with and without diffusion. \\textbf{(F)} Activation heatmap for exemplar term representations."}
+```{r fig.casestudies, eval=TRUE, echo=FALSE, fig.width=6.5, fig.height=3.4, fig.cap="\\textbf{Feedback from ML for ontology development.} \\textbf{(A)} Unsupervised UMAP embedding of FBDV ontology terms (dots) according to their similarity of text-based annotations. Selected groups of terms are labeled manually. \\textbf{(B)} Parent-retrieval performance in the original FBDV ontology and a modified version with more hierarchical relations. \\textbf{(C)} Effect of diffusion on parent retrieval in the human phenotype ontology, HP. Dots represent measurements and lines are interpolations. Two series represent results on models trained with names and FT datasets; all queries performed with names data. \\textbf{(D)} Summary of errors in parent retrieval without (above) and with (below) diffusion. \\textbf{(E)} Example of an ontology term with a large parent-retrieval error. \\textbf{(F)} Activation heatmap for exemplar term representations."}
 layout(matrix(c(1, 1, 3, 4, 5,
 				1, 1, 3, 4, 6,
                 1, 1, 7, 7, 7,
@@ -259,7 +259,7 @@ names(.fbdv.bars)[names(.fbdv.bars)=="fbdv-isa"] = "modified"
 names(.fbdv.bars)[names(.fbdv.bars)=="fbdv"] = "original"
 plot.simplebars(rev(.fbdv.bars), at=c(0, 0.1, 0.2, 0.3),
 				main="FBDV", xlim=c(0, 0.31),
-				xlab="parent-retrieval, precision")
+				xlab="parent-retrieval")
 multipanelLabel(panel.labels[2])
 #
 # HP ontology
@@ -268,7 +268,7 @@ multipanelLabel(panel.labels[2])
 plot.lines(hp.search.diff.summary[difftype=="parents" & obotype=="name"],
 		   x="diffvalue", y="precision_any_parent",
 		   xlim=c(0, 0.5), ylim=c(0, 0.62),
-           xlab="diffusion strength", ylab="parent retrieval, precision",
+           xlab="diffusion strength", ylab="parent retrieval",
 		   main="HP (human phenotypes)")
 add.line(hp.search.diff.summary[difftype=="parents" & obotype=="plain"],
 		  x="diffvalue", y="precision_any_parent", Rcssclass=c("lines", "plain"))
