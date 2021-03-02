@@ -61,7 +61,7 @@ plot.heattable = function(m1, m2=NULL,
       for (y in seq_len(nrow(m))) {
         .col = color.vector[round(m[y,x]*100)]
         rect(xvals[x]-0.5, -y-0.5, xvals[x]+0.5, -y+0.5, col=.col)
-        text(xvals[x], -y, signif(m[y,x], digits),
+        text(xvals[x], -y, format(round(m[y,x], digits), nsmall=2),
              Rcssclass=ifelse(m[y,x]>0.5, "high", "low"))
       }
     }
@@ -85,7 +85,7 @@ plot.heattable = function(m1, m2=NULL,
   rect(legend.x[1], legend.y[1], legend.x[2], legend.y[2],
        Rcssclass=c("legend", "outer"))
   text(legend.x[3], c(legend.y[1], mean(legend.y), legend.y[2]),
-       c(0, 0.5, 1), Rcssclass="legend")
+       c("0.0", "0.5", "1.0"), Rcssclass="legend")
   text(legend.x[1], legend.y[2], legend.main,
        Rcssclass=c("legend", "main"))
 }

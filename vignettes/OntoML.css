@@ -334,7 +334,7 @@ mtext.graph.main {
 heattable {
   between: 0.25;
   legend.padding: 0.25;
-  legend.textpad: 0.05;
+  legend.textpad: 0.08;
   legend.width: 0.15;
   legend.height: 2.4;
 }
@@ -351,7 +351,7 @@ heatmap.glm {
   legend.height: 9;
 }
 par.heattable {
-  mai: 0.25 0.5 0.25 0.4;
+  mai: 0.25 0.5 0.25 0.45;
   mgp: 0 0 0;
 }
 par.heatmap {
@@ -427,7 +427,7 @@ text.heattable.legend, text.heatmap.legend {
   col: #333333;
 }
 text.heattable.legend.main, text.heatmap.legend.main {
-  adj: 0 -1;
+  adj: 0 -1.5;
 }
 mtext.heattable.xlab {
   line: 0.3;
@@ -693,7 +693,7 @@ ontologyterm {
 }
 ontologyterm.wide {
   id.width: 0.1;
-  line.height: 0.22;
+  line.height: 0.20;
 }
 par.ontologyterm {
   mai: 0.06 0.15 0.2 0.1;

@@ -61,8 +61,12 @@ fig.explaining = function(d, y, ylab="Parent retrieval, precision",
                           label.ids=list("_", "_", "_", "_", "_"),
                           adj=c(0.5, -1),
                           panel.label="a") {
+  num_terms_at = list(x=10^seq(1, 6, by=2), y=seq(0, 1, by=0.25))
   plot.scatter(d, xy=c("num_terms", y),
-               log="x", at=list(x=10^seq(1, 6, by=2), y=seq(0, 1, by=0.25)),
+               log="x",
+               at=num_terms_at,,
+               at.labels=list(x=sprintf("%d", num_terms_at$x),
+                              y=num_terms_at$y),
                xlim=c(10, 3e6), ylim=c(0, 1),
                xlab="Size (num. terms)",
                ylab=ylab, Rcssclass="large")

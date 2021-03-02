@@ -46,7 +46,7 @@ supfig.not.selected[!id %in% ontologies.recent & count_zero_depth, "filter"] = "
 supfig.not.selected[num_terms<10, "filter"] = "S"
 supfig.not.selected.1 = supfig.not.selected[seq_len(.n)]
 supfig.not.selected.2 = supfig.not.selected[seq(.n+1, nrow(supfig.not.selected))]
-supfig.item.height = 0.1;
+supfig.item.height = 0.0833;
 supfig.heights = 0.45 + supfig.item.height*c(.n, .n, nrow(supfig.not.selected.2))
 ```
 
